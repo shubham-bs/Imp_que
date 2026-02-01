@@ -36,6 +36,7 @@ envelope.addEventListener("click", () => {
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
 }); */
 
+/*
 let moveCount = 0;
 
 const letterWindow = document.querySelector(".letter-window");
@@ -76,7 +77,45 @@ noBtn.addEventListener("mouseenter", () => {
     noBtn.style.transition = "transform 0.2s ease";
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
 });
+*/
 
+let moveCount = 0;
+
+const letterWindow = document.querySelector(".letter-window");
+
+noBtn.addEventListener("mouseenter", () => {
+
+    if (moveCount >= 4) return;
+    moveCount++;
+
+    const letterRect = letterWindow.getBoundingClientRect();
+    const btnRect = noBtn.getBoundingClientRect();
+
+    const padding = 16; // keep some margin from edges
+
+    const minX = letterRect.left + padding;
+    const maxX = letterRect.right - btnRect.width - padding;
+
+    const minY = letterRect.top + padding;
+    const maxY = letterRect.bottom - btnRect.height - padding;
+
+    const currentX = btnRect.left;
+    const currentY = btnRect.top;
+
+    const maxJump = 60;
+
+    let randomX = currentX + (Math.random() * 2 - 1) * maxJump;
+    let randomY = currentY + (Math.random() * 2 - 1) * maxJump;
+
+    randomX = Math.min(Math.max(randomX, minX), maxX);
+    randomY = Math.min(Math.max(randomY, minY), maxY);
+
+    const moveX = randomX - currentX;
+    const moveY = randomY - currentY;
+
+    noBtn.style.transition = "transform 0.2s ease";
+    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+});
 
 
 
