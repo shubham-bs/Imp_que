@@ -1,4 +1,5 @@
 // Elements
+const noSound = new Audio("no.mp3");
 const envelope = document.getElementById("envelope-container");
 const letter = document.getElementById("letter-container");
 const noBtn = document.querySelector(".no-btn");
@@ -129,6 +130,10 @@ noBtn.addEventListener("mouseenter", () => {
  yesBtn.style.transition = "transform 0.3s ease";
 
  noBtn.addEventListener("click", () => {
+     
+     noSound.currentTime = 0;
+     noSound.play();
+     
      yesScale += 2;
 
      if (yesBtn.style.position !== "fixed") {
