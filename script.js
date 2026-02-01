@@ -43,12 +43,11 @@ const startRect = noBtn.getBoundingClientRect();
 const startX = startRect.left;
 const startY = startRect.top;
 
-noBtn.addEventListener("mouseover", () => {
+noBtn.addEventListener("mouseenter", () => {
 
     if (moveCount >= 4) return;
     moveCount++;
 
-    // allowed movement from the locked position
     const minX = startX - 100;  // left
     const maxX = startX + 100;  // right
 
@@ -66,6 +65,7 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.style.transition = "transform 0.3s ease";
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
 });
+
 
 
 
