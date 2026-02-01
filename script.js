@@ -40,22 +40,29 @@ let moveCount = 0;
 
 noBtn.addEventListener("mouseover", () => {
 
-    if (moveCount >= 4) return;   // stop after 4 moves
-
+    if (moveCount >= 4) return;
     moveCount++;
 
-    const min = 100;
-    const max = 100;
+    const padding = 10; // keep a small gap from edges
 
-    const distance = Math.random() * (max - min) + min;
-    const angle = Math.random() * Math.PI * 2;
+    const btnRect = noBtn.getBoundingClientRect();
 
-    const moveX = Math.cos(angle) * distance;
-    const moveY = Math.sin(angle) * distance;
+    const maxX = window.innerWidth - btnRect.width - padding;
+    const maxY = window.innerHeight - btnRect.height - padding;
+
+    const randomX = Math.random() * (maxX - padding) + padding;
+    const randomY = Math.random() * (maxY - padding) + padding;
+
+    const currentX = btnRect.left;
+    const currentY = btnRect.top;
+
+    const moveX = randomX - currentX;
+    const moveY = randomY - currentY;
 
     noBtn.style.transition = "transform 0.3s ease";
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
 });
+
 
 
 // Logic to make YES btn to grow
