@@ -14,6 +14,14 @@ const finalText = document.getElementById("final-text");
 // Click Envelope
 
 envelope.addEventListener("click", () => {
+
+    moveSound.muted = true;
+    moveSound.play().then(() => {
+        moveSound.pause();
+        moveSound.currentTime = 0;
+        moveSound.muted = false;
+    });
+    
     envelope.style.display = "none";
     letter.style.display = "flex";
 
