@@ -1,5 +1,5 @@
 // Elements
-const noSound = new Audio("No.mp3");
+const noSound = new Audio("NO.mp3");
 const envelope = document.getElementById("envelope-container");
 const letter = document.getElementById("letter-container");
 const noBtn = document.querySelector(".no-btn");
