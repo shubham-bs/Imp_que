@@ -2,6 +2,7 @@
 const noSound = new Audio("NO.mp3");
 const moveSound = new Audio("Swoosh.mp3");
 const yesSound = new Audio("RTC111.m4a");
+yesSound.loop = true;
 const envelope = document.getElementById("envelope-container");
 const letter = document.getElementById("letter-container");
 const noBtn = document.querySelector(".no-btn");
