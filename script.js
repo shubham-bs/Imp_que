@@ -1,5 +1,6 @@
 // Elements
 const noSound = new Audio("NO.mp3");
+const moveSound = new Audio("Swoosh.mp3");
 const envelope = document.getElementById("envelope-container");
 const letter = document.getElementById("letter-container");
 const noBtn = document.querySelector(".no-btn");
@@ -89,6 +90,9 @@ noBtn.addEventListener("mouseenter", () => {
     if (moveCount >= 4) return;
     moveCount++;
 
+    moveSound.currentTime = 0;
+    moveSound.play();
+    
     const letterRect = letterWindow.getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
 
