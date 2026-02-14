@@ -83,7 +83,6 @@ p {
 }
 
 
-/* Cat */
 
 .cat {
     width: 250px;
@@ -95,7 +94,6 @@ p {
     width: 180px;
 }
 
-/* buttons */
 .buttons {
     display: flex;
     justify-content: center;
@@ -144,7 +142,6 @@ display: inline-block;
     border-radius: 12px;
 }
 
-/* Meme styling */
 
 .floating-meme {
     position: fixed;
@@ -173,7 +170,6 @@ display: inline-block;
     }
 }
 
-/* Keep envelope above memes */
 .letter-window {
     position: relative;
     z-index: 10;
