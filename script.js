@@ -68,29 +68,14 @@ function spawnMeme() {
     meme.src = memes[memeIndex];
     meme.classList.add("floating-meme");
 
-    const memeHeight = 200 * 0.75; // approx image ratio
-    const spacing = 15;
+    const memeWidth = 180;
+    const memeHeight = 180;
+    const padding = 20;
 
-    const maxPerColumn = Math.floor(
-        (window.innerHeight - 40) / (memeHeight + spacing)
-    );
-
-    const side = memeIndex % 2 === 0 ? "left" : "right";
-
-    let columnIndex;
-
-    if (side === "left") {
-        columnIndex = leftCount % maxPerColumn;
-        leftCount++;
-    } else {
-        columnIndex = rightCount % maxPerColumn;
-        rightCount++;
-    }
-
-    const finalTop = 20 + columnIndex * (memeHeight + spacing);
+    meme.style.width = memeWidth + "px";
 
     // Random initial position
-    const randomX = Math.random() * (window.innerWidth - 220);
+    const randomX = Math.random() * (window.innerWidth - memeWidth);
     const randomY = Math.random() * (window.innerHeight - memeHeight);
 
     meme.style.left = `${randomX}px`;
@@ -98,23 +83,50 @@ function spawnMeme() {
 
     document.body.appendChild(meme);
 
-    // Animate to final position
+    let finalLeft, finalTop;
+
+    // LEFT COLUMN (0–3)
+    if (memeIndex < 4) {
+
+        finalLeft = padding;
+        finalTop = padding + memeIndex * (memeHeight + 15);
+
+    }
+    // RIGHT COLUMN (4–7)
+    else if (memeIndex < 8) {
+
+        finalLeft = window.innerWidth - memeWidth - padding;
+        finalTop = padding + (memeIndex - 4) * (memeHeight + 15);
+
+    }
+    // TOP ROW (8–10)
+    else if (memeIndex < 11) {
+
+        const topIndex = memeIndex - 8;
+        const totalWidth = memeWidth * 3 + 30;
+        const startX = (window.innerWidth - totalWidth) / 2;
+
+        finalLeft = startX + topIndex * (memeWidth + 15);
+        finalTop = padding;
+
+    }
+    // BOTTOM CENTER (11)
+    else {
+
+        finalLeft = (window.innerWidth - memeWidth) / 2;
+        finalTop = window.innerHeight - memeHeight - padding;
+
+    }
+
+    // Animate to final slot
     setTimeout(() => {
-
+        meme.style.left = `${finalLeft}px`;
         meme.style.top = `${finalTop}px`;
-
-        if (side === "left") {
-            meme.style.left = "20px";
-            meme.style.right = "";
-        } else {
-            meme.style.left = "";
-            meme.style.right = "20px";
-        }
-
     }, 300);
 
     memeIndex++;
 }
+
 
 
 // ===== NO BUTTON MOVE =====
