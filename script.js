@@ -60,8 +60,8 @@ function spawnMeme() {
     meme.src = memes[memeIndex];
     meme.classList.add("floating-meme");
 
-    const padding = 30;
-    const spacing = 25;
+    const padding = 15;
+    const spacing = 15;
 
     const screenWidth = document.documentElement.clientWidth;
     const screenHeight = document.documentElement.clientHeight;
@@ -73,7 +73,7 @@ function spawnMeme() {
     // === LEFT COLUMN (0–3) ===
     if (memeIndex < 4) {
 
-        memeWidth = Math.min(screenWidth * 0.18, 360);
+        memeWidth = Math.min(screenWidth * 0.13, 220);
         memeHeight = memeWidth * 0.75;
 
         meme.style.width = memeWidth + "px";
@@ -85,7 +85,7 @@ function spawnMeme() {
     // === RIGHT COLUMN (4–7) ===
     else if (memeIndex < 8) {
 
-        memeWidth = Math.min(screenWidth * 0.18, 360);
+        memeWidth = Math.min(screenWidth * 0.13, 220);
         memeHeight = memeWidth * 0.75;
 
         meme.style.width = memeWidth + "px";
@@ -97,7 +97,7 @@ function spawnMeme() {
     // === TOP ROW (8–10) ===
     else {
 
-        memeWidth = Math.min(screenWidth * 0.13, 240);
+        memeWidth = Math.min(screenWidth * 0.10, 170);
         memeHeight = memeWidth * 0.75;
 
         meme.style.width = memeWidth + "px";
@@ -110,8 +110,8 @@ function spawnMeme() {
         finalTop = padding;
     }
 
-    // Prevent bottom overflow (Windows safety)
-    if (finalTop + memeHeight > screenHeight) {
+    // Prevent bottom overflow (taskbar safety)
+    if (finalTop + memeHeight > screenHeight - padding) {
         finalTop = screenHeight - memeHeight - padding;
     }
 
@@ -132,6 +132,7 @@ function spawnMeme() {
 
     memeIndex++;
 }
+
 
 // ===== NO BUTTON MOVE =====
 let moveCount = 0;
