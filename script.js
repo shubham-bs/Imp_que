@@ -221,6 +221,19 @@ yesBtn.addEventListener("click", () => {
     title.textContent = "Yippeeee!";
     catImg.src = "cat_dance.gif";
 
+    // Fade out all memes slowly
+const allMemes = document.querySelectorAll(".floating-meme");
+
+allMemes.forEach(meme => {
+    meme.classList.add("fade-out");
+});
+
+// Optional: remove them from DOM after fade
+setTimeout(() => {
+    allMemes.forEach(meme => meme.remove());
+}, 4000);
+
+
     letterWindow.classList.add("final");
 
     buttons.style.display = "none";
