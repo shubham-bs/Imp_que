@@ -148,12 +148,13 @@ display: inline-block;
 
 .floating-meme {
     position: fixed;
-    width: 200px;
+    width: 180px;
     height: auto;
     z-index: 1;
     pointer-events: none;
-    transition: left 0.6s ease, right 0.6s ease, top 0.6s ease;
+    transition: left 0.6s ease, top 0.6s ease;
 }
+
 
 
 @keyframes popIn {
