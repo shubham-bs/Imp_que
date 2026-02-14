@@ -55,8 +55,8 @@ function spawnMeme() {
     meme.src = memes[memeIndex];
     meme.classList.add("floating-meme");
 
-    const padding = 30;
-    const spacing = 25;
+    const padding = 20;
+    const spacing = 20;
 
     const screenWidth = document.documentElement.clientWidth;
     const screenHeight = document.documentElement.clientHeight;
@@ -65,10 +65,10 @@ function spawnMeme() {
     let memeHeight;
     let finalLeft, finalTop;
 
-
+    // === LEFT COLUMN (0–3) ===
     if (memeIndex < 4) {
 
-        memeWidth = Math.min(screenWidth * 0.18, 360);
+        memeWidth = Math.min(screenWidth * 0.15, 280);
         memeHeight = memeWidth * 0.75;
 
         meme.style.width = memeWidth + "px";
@@ -77,10 +77,10 @@ function spawnMeme() {
         finalTop = padding + memeIndex * (memeHeight + spacing);
     }
 
-
+    // === RIGHT COLUMN (4–7) ===
     else if (memeIndex < 8) {
 
-        memeWidth = Math.min(screenWidth * 0.18, 360);
+        memeWidth = Math.min(screenWidth * 0.15, 280);
         memeHeight = memeWidth * 0.75;
 
         meme.style.width = memeWidth + "px";
@@ -89,10 +89,10 @@ function spawnMeme() {
         finalTop = padding + (memeIndex - 4) * (memeHeight + spacing);
     }
 
-
+    // === TOP ROW (8–10) ===
     else {
 
-        memeWidth = Math.min(screenWidth * 0.13, 240);
+        memeWidth = Math.min(screenWidth * 0.11, 200);
         memeHeight = memeWidth * 0.75;
 
         meme.style.width = memeWidth + "px";
@@ -105,12 +105,12 @@ function spawnMeme() {
         finalTop = padding;
     }
 
-    
+    // Prevent bottom overflow
     if (finalTop + memeHeight > screenHeight) {
         finalTop = screenHeight - memeHeight - padding;
     }
 
-
+    // === RANDOM START POSITION ===
     const randomX = Math.random() * (screenWidth - memeWidth);
     const randomY = Math.random() * (screenHeight - memeHeight);
 
@@ -119,7 +119,7 @@ function spawnMeme() {
 
     document.body.appendChild(meme);
 
-    
+    // === ANIMATE TO FINAL POSITION ===
     setTimeout(() => {
         meme.style.left = `${finalLeft}px`;
         meme.style.top = `${finalTop}px`;
@@ -127,6 +127,7 @@ function spawnMeme() {
 
     memeIndex++;
 }
+
 
 
 let moveCount = 0;
