@@ -66,37 +66,33 @@ function spawnMeme() {
     const padding = 20;
 
     let memeWidth;
-    let memeHeight;
     let finalLeft, finalTop;
 
-    // LEFT COLUMN (0–3) → 308px
+    // LEFT COLUMN (0–3)
     if (memeIndex < 4) {
 
-        memeWidth = 308;
+        memeWidth = 220;
         meme.style.width = memeWidth + "px";
-        meme.style.transform = "rotate(-4deg)";
 
         finalLeft = padding;
-        finalTop = padding + memeIndex * (memeWidth * 0.75 + 25);
+        finalTop = padding + memeIndex * (memeWidth * 0.75 + 20);
 
     }
-    // RIGHT COLUMN (4–7) → 308px
+    // RIGHT COLUMN (4–7)
     else if (memeIndex < 8) {
 
-        memeWidth = 308;
+        memeWidth = 220;
         meme.style.width = memeWidth + "px";
-        meme.style.transform = "rotate(4deg)";
 
         finalLeft = window.innerWidth - memeWidth - padding;
-        finalTop = padding + (memeIndex - 4) * (memeWidth * 0.75 + 25);
+        finalTop = padding + (memeIndex - 4) * (memeWidth * 0.75 + 20);
 
     }
-    // TOP ROW (8–10) → 180px
+    // TOP ROW (8–10)
     else {
 
         memeWidth = 180;
         meme.style.width = memeWidth + "px";
-        meme.style.transform = "rotate(" + (Math.random() * 6 - 3) + "deg)";
 
         const topIndex = memeIndex - 8;
         const totalWidth = memeWidth * 3 + 30;
@@ -107,18 +103,16 @@ function spawnMeme() {
 
     }
 
-    memeHeight = memeWidth * 0.75;
-
-    // Start at random
+    // Random initial position
     const randomX = Math.random() * (window.innerWidth - memeWidth);
-    const randomY = Math.random() * (window.innerHeight - memeHeight);
+    const randomY = Math.random() * (window.innerHeight - 200);
 
     meme.style.left = `${randomX}px`;
     meme.style.top = `${randomY}px`;
 
     document.body.appendChild(meme);
 
-    // Animate to final slot
+    // Animate to final position
     setTimeout(() => {
         meme.style.left = `${finalLeft}px`;
         meme.style.top = `${finalTop}px`;
