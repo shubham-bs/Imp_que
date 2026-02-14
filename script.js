@@ -102,8 +102,6 @@ function spawnMeme() {
         const startX = (window.innerWidth - totalWidth) / 2;
 
         finalLeft = startX + topIndex * (memeWidth + 15);
-        meme.style.transform = "rotate(" + (Math.random() * 6 - 3) + "deg)";
-
         finalTop = padding;
 
     }
